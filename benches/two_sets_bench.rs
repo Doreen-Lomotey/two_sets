@@ -3,6 +3,10 @@ use criterion::{black_box, criterion_group, criterion_main, Criterion};
 use two_sets::fast_solution;
 use two_sets::slow_solution;
 
+/// BENCHMARK INTERPRETATION:
+/// Fast = greedy subset sum approach (O(n), early termination possible)
+/// Slow = brute-force nested scanning approach (O(n²))
+/// This shows how algorithm design impacts runtime even for the same problem.
 fn benchmark_fast(c: &mut Criterion) {
     c.bench_function("fast_O_n", |b| {
         b.iter(|| {
@@ -11,6 +15,10 @@ fn benchmark_fast(c: &mut Criterion) {
     });
 }
 
+/// BENCHMARK INTERPRETATION:
+/// Fast = optimized greedy solution (single pass logic)
+/// Slow = repeated scanning with nested loops (inefficient simulation)
+/// Demonstrates practical performance gap between O(n) and O(n²)
 fn benchmark_slow(c: &mut Criterion) {
     c.bench_function("slow_O_n2", |b| {
         b.iter(|| {
